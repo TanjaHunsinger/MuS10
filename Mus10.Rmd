@@ -1,0 +1,159 @@
+---
+title: "MuS10"
+author: "Tanja Hunsinger, Irene Müller-Benz"
+date: "7 Januar 2018"
+output: pdf_document
+---
+
+##Problem 10.1: Graphical presentation of data sets
+
+### 1.  We define three functions $F_i$(x) = $x^i$ by choosing $i \in {0.5; 1; 2}$. Plot the three functions for ${x : 1  <= x  <= 10 und x \in Z }$ with a linear and a logarithmic scaling for both the x- and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Points]
+
+
+```{r}
+#Wertebereich x von 1 bis 10
+x<-c(1:10)
+
+#definintion der funtionen
+function_1<-x^(0.5)
+function_2<-x^1
+function_3<-x^2
+
+# plot linear scaling:
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+              ceiling(max(function_1,function_2,function_3))), 
+              type = "n", ylab = " F(X)", xlab = "x", 
+              main = "lineares caling")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("x^(0.5)", "x^1", "x^2"), 
+              col = c("red","blue","green"), lty = "solid")
+
+#plot logarithmic scaling
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+              ceiling(max(function_1,function_2,function_3))), 
+              type = "n", ylab = " F(X)", xlab = "x", 
+              main = "logarithmisches scaling", log = "xy")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("x^(0.5)", "x^1", "x^2"), 
+       col = c("red","blue","green"), lty = "solid")
+```
+
+
+### 2.  We define three functions $F_i (x) = e^{i*x}$ by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10  und x \in Z }$ with a linear,linear and a linear,logarithmic scaling for the x- and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Punkte]
+
+```{r echo=FALSE}
+#Wertebereich x von 1 bis 10
+x<-c(1:10)
+
+#definintion der funtionen
+function_1<-exp(0.5*x)
+function_2<-exp(1*x)
+function_3<-exp(2*x)
+
+# plot linear/linear scaling:
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+            ceiling(max(function_1,function_2,function_3))), 
+            type = "n", ylab = " F(X)", xlab = "x", 
+            main = "x-Achse und y-Achse linear scaliert")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"), 
+            col = c("red","blue","green"), lty = "solid")
+
+#plot linear/logarithmic scaling
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+            ceiling(max(function_1,function_2,function_3))), 
+            type = "n", ylab = " F(X)", xlab = "x", 
+            main = "x-Achse linear und y-Achse logarithmisch scaliert", log = "y")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"), 
+            col = c("red","blue","green"), lty = "solid")
+
+```
+
+### 3. We define three functions $F_i$ (x) = ln(i*x) by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10 und x \in Z }$ with  a linear, linear and a logarithmic, linear scaling for the x-and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Points]
+
+
+```{r echo=FALSE}
+#Wertebereich x von 1 bis 10
+x<-c(1:10)
+
+#definintion der funtionen
+function_1<-log(0.5*x)
+function_2<-log(1*x)
+function_3<-log(2*x)
+
+# plot linear/linear scaling:
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+              ceiling(max(function_1,function_2,function_3))), 
+              type = "n", ylab = " F(X)", xlab = "x", 
+              main = "x-Achse und y-Achse linear scaliert")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"),
+              col = c("red","blue","green"), lty = "solid")
+
+#plot logarithmic/linear scaling
+plot(range(x), range(floor(min(function_1,function_2,function_3)):
+              ceiling(max(function_1,function_2,function_3))), 
+              type = "n", ylab = " F(X)", xlab = "x", 
+              main = "x-Achse logartithmisch und y-Achse linearh scaliert", 
+              log = "x")
+lines(x, function_1, type = "b", col = "red")
+lines(x, function_2, type = "b", col = "blue")
+lines(x, function_3, type = "b", col = "green")
+legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"), 
+            col = c("red","blue","green"), lty = "solid")
+
+```
+
+
+##Problem 10.2: Data Analysis
+
+The provided file US_States_Production.csv contains 816 regional observations describing capital productivity key figures in the Contiguous United States between 1970 and 1986, which were used as statistical base for two scientific publications in the ???eld of econometry. Each observation contains the following variables:
+
+###var0 the US state
+###var1 the year of the observation
+###var2 private capital
+###var3 highway and street capital
+###var4 water utility capital
+###var5 utility capital (other public buildings and structures)
+###var6 public capital
+###var7 gross state product
+###var8 employment
+###var9 unemployment rate
+
+Perform a fundamental data analysis by following the steps below:
+
+###1. Import the data set! Choose appropriate labels for the columns and apply the changes to the data frame! [5 Points]
+
+
+
+
+###2. Visualize the following analytical perspectives using plots! 
+- Unemployment rate between 1970 and 1986 in the United States.
+
+- Private capital between 1970 and 1986 for the five states having the highest private capital in average.
+
+- Public capital between 1970 and 1986 for the state having the highest and the state having the lowest public capital in average.
+
+
+###3. Boxplots can be used to visually detect similarities and differences in data sets. Create boxplots for the following scenarios and briefly comment on the results!
+- Unemployment rate between 1970 and 1986 for the two states having the highest unemployment rate on average.
+
+- Highway and street capital between 1970 and 1986 for the two states having the lowest highway and street capital on average.
+
+
+###4. We intuitively presume, that the employment value and the unemployment rate are correlated. Calculate the mean values (considering all states for each year) for both variables and plot both data series in one plot! The plot should have the years on the x-axis and two y-axes for the mean values of both variables. Finally, calculate the correlation value for the two data series and briefly comment on the results!
+
+###5. Seperate the original data frames containing all observation in multiple dataframes, containing only observations belonging to a particular US state! Output the observations of the US state Florida as a csv file!
+
+
