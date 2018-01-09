@@ -1,6 +1,6 @@
 ---
 title: "MuS10"
-author: "Tanja Hunsinger, Irene Müller-Benz"
+author: "Tanja Hunsinger, Irene MÃ¼ller-Benz"
 date: "7 Januar 2018"
 output: pdf_document
 ---
@@ -135,22 +135,250 @@ Perform a fundamental data analysis by following the steps below:
 
 ###1. Import the data set! Choose appropriate labels for the columns and apply the changes to the data frame! [5 Points]
 
-
+```{r}
+#import data 
+us_states_productions <- read.csv("US_States_Production.csv")
+names(us_states_productions)[2] <- "state" 
+names(us_states_productions)[3] <- "year"
+names(us_states_productions)[4] <- "privat_capital"
+names(us_states_productions)[5] <- "street_capital"
+names(us_states_productions)[6] <- "water_capital"
+names(us_states_productions)[7] <- "utility_capital"
+names(us_states_productions)[8] <- "public_capital"
+names(us_states_productions)[9] <- "state_product"
+names(us_states_productions)[10] <- "employment"
+names(us_states_productions)[11] <- "unemployment_rate"
+us_states_productions
+```
 
 
 ###2. Visualize the following analytical perspectives using plots! 
 - Unemployment rate between 1970 and 1986 in the United States.
+```{r}
+# Mean Unemployment rate per year
+y1970 <- subset(us_states_productions, year == 1970)
+rate1970 <- mean(y1970$unemployment_rate)
 
+y1971 <- subset(us_states_productions, year == 1971)
+rate1971 <- mean(y1971$unemployment_rate)
+
+y1972 <- subset(us_states_productions, year == 1972)
+rate1972 <- mean(y1972$unemployment_rate)
+
+y1973 <- subset(us_states_productions, year == 1973)
+rate1973 <- mean(y1973$unemployment_rate)
+
+y1974 <- subset(us_states_productions, year == 1974)
+rate1974 <- mean(y1974$unemployment_rate)
+
+y1975 <- subset(us_states_productions, year == 1975)
+rate1975 <- mean(y1975$unemployment_rate)
+
+y1976 <- subset(us_states_productions, year == 1976)
+rate1976 <- mean(y1970$unemployment_rate)
+
+y1977 <- subset(us_states_productions, year == 1977)
+rate1977 <- mean(y1977$unemployment_rate)
+
+y1978 <- subset(us_states_productions, year == 1978)
+rate1978 <- mean(y1978$unemployment_rate)
+
+y1979 <- subset(us_states_productions, year == 1979)
+rate1979 <- mean(y1979$unemployment_rate)
+
+y1980 <- subset(us_states_productions, year == 1980)
+rate1980 <- mean(y1980$unemployment_rate)
+
+y1981 <- subset(us_states_productions, year == 1981)
+rate1981 <- mean(y1981$unemployment_rate)
+
+y1982 <- subset(us_states_productions, year == 1982)
+rate1982 <- mean(y1982$unemployment_rate)
+
+y1983 <- subset(us_states_productions, year == 1983)
+rate1983 <- mean(y1983$unemployment_rate)
+
+y1984 <- subset(us_states_productions, year == 1984)
+rate1984 <- mean(y1984$unemployment_rate)
+
+y1985 <- subset(us_states_productions, year == 1985)
+rate1985 <- mean(y1985$unemployment_rate)
+
+y1986 <- subset(us_states_productions, year == 1986)
+rate1986 <- mean(y1986$unemployment_rate)
+
+rates <- c(rate1970, rate1971, rate1972, rate1973, rate1974, rate1975, rate1976, rate1977, rate1978, rate1979, rate1980, rate1981, rate1982, rate1983, 
+           rate1984, rate1985, rate1986)
+year <- c(1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986)
+year_rate <- c(year, rates)
+year_rates <- matrix(year_rate, ncol = 2, nrow = 17)
+
+plot(year_rates, type = "b", ylab = "Unemployment rate", xlab = "Year", 
+              main = "Unemployment rate between 1970 and 1986 in the United States")
+```
 - Private capital between 1970 and 1986 for the five states having the highest private capital in average.
+```{r}
+states <- unique(us_states_productions$state)
 
+st1 <- subset(us_states_productions, state == states[1])
+priv_cap <- c()
+for (i in 1:48) {
+  st <- subset(us_states_productions, state == states[i])
+  st_avg <- mean(st$privat_capital)
+  priv_cap <- c(priv_cap, st_avg)
+}
+order_priv_cap <- order(priv_cap, decreasing = TRUE)
+highst_priv_cap <- matrix(order_priv_cap, nrow = 5, ncol = 1)
+highst_priv_cap
+state1 <- states[4]
+state2 <- states[30]
+state3 <- states[41]
+state4 <- states[11]
+state5 <- states[36]
+
+state1
+state2
+state3
+state4
+state5
+
+five_states1 <- subset(us_states_productions, state == "CALIFORNIA")
+five_states2 <- subset(us_states_productions, state == "NEW_YORK")
+five_states3 <- subset(us_states_productions, state == "TEXAS")
+five_states4 <- subset(us_states_productions, state == "ILLINOIS")
+five_states5 <- subset(us_states_productions, state == "PENNSYLVANIA")
+
+year_capC <- matrix(c(five_states1$year, five_states1$privat_capital), nrow = 17, ncol = 2)
+year_capN <- matrix(c(five_states2$year, five_states2$privat_capital), nrow = 17, ncol = 2)
+year_capT <- matrix(c(five_states3$year, five_states3$privat_capital), nrow = 17, ncol = 2)
+year_capI <- matrix(c(five_states4$year, five_states4$privat_capital), nrow = 17, ncol = 2)
+year_capP <- matrix(c(five_states5$year, five_states5$privat_capital), nrow = 17, ncol = 2)
+
+plot(year_capC, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Private capital between 1970 and 1986 for California")
+plot(year_capN, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Private capital between 1970 and 1986 for New York")
+plot(year_capT, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Private capital between 1970 and 1986 for Texas")
+plot(year_capI, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Private capital between 1970 and 1986 for Illinois")
+plot(year_capP, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Private capital between 1970 and 1986 for Pennsylvania")
+
+```
 - Public capital between 1970 and 1986 for the state having the highest and the state having the lowest public capital in average.
+```{r}
+pub_cap <- c()
+for (i in 1:48) {
+  st <- subset(us_states_productions, state == states[i])
+  st_avg <- mean(st$public_capital)
+  pub_cap <- c(pub_cap, st_avg)
+}
+order_high_pub_cap <- order(pub_cap, decreasing = TRUE)
+order_low_pub_cap <- order(pub_cap)
+highst_pub_cap <- matrix(order_high_pub_cap, nrow = 1, ncol = 1)
+lowest_pub_cap <- matrix(order_low_pub_cap, nrow = 1, ncol = 1)
+highst_pub_cap
+lowest_pub_cap
+statePubHigh <- states[41]
+statePubLow <- states[43]
+statePubHigh
+statePubLow
 
+Texas <- subset(us_states_productions, state == "TEXAS")
+Vermont <- subset(us_states_productions, state == "VERMONT")
+
+year_pub_capT <- matrix(c(Texas$year, Texas$privat_capital), nrow = 17, ncol = 2)
+year_pub_capV <- matrix(c(Vermont$year, Vermont$privat_capital), nrow = 17, ncol = 2)
+
+plot(year_pub_capT, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Public capital between 1970 and 1986 for Texas")
+plot(year_pub_capV, type = "b", ylab = "private capital", xlab = "Year", 
+              main = "Public capital between 1970 and 1986 for Vermont")
+
+```
 
 ###3. Boxplots can be used to visually detect similarities and differences in data sets. Create boxplots for the following scenarios and briefly comment on the results!
 - Unemployment rate between 1970 and 1986 for the two states having the highest unemployment rate on average.
+```{r}
+unemp_rate <- c()
+for (i in 1:48) {
+  st <- subset(us_states_productions, state == states[i])
+  st_avg <- mean(st$unemployment_rate)
+  unemp_rate <- c(unemp_rate, st_avg)
+}
+order_unemp_rate <- order(unemp_rate, decreasing = TRUE)
+highst_unemp_rate <- matrix(order_unemp_rate, nrow = 2, ncol = 1)
+highst_unemp_rate
+stateUn1 <- states[20]
+stateUn2 <- states[46]
 
+stateUn1
+stateUn2
+
+Michigan <- subset(us_states_productions, state == "MICHIGAN")
+W_Verginia <- subset(us_states_productions, state == "WEST_VIRGINIA")
+
+year_unempM <- matrix(c(Michigan$year, Michigan$unemployment_rate), nrow = 17, ncol = 2)
+mean1 = mean(Michigan$unemployment_rate)
+sd1 = sd(Michigan$unemployment_rate)
+mean1
+sd1
+year_unempV <- matrix(c(W_Verginia$year, W_Verginia$unemployment_rate), nrow = 17, ncol = 2)
+mean2 = mean(W_Verginia$unemployment_rate)
+sd2 = sd(W_Verginia$unemployment_rate)
+mean2
+sd2
+
+x <- rnorm(17, mean = 9.694118, sd = 2.881942)
+y <- rnorm(17, mean = 9.270588, sd = 3.804728)
+
+d <- data.frame(treatment=c(x,y))
+
+boxplot(d) #?????
+
+
+```
 - Highway and street capital between 1970 and 1986 for the two states having the lowest highway and street capital on average.
+```{r}
+street_cap <- c()
+for (i in 1:48) {
+  st <- subset(us_states_productions, state == states[i])
+  st_avg <- mean(st$street_capital)
+  street_cap <- c(street_cap, st_avg)
+}
+order_street_cap <- order(street_cap)
+lowest_street_cap <- matrix(order_street_cap, nrow = 2, ncol = 1)
+lowest_street_cap
+stateStr1 <- states[43]
+stateStr2 <- states[37]
 
+stateStr1
+stateStr2
+
+Vermont <- subset(us_states_productions, state == "VERMONT")
+R_Island <- subset(us_states_productions, state == "RHODE_ISLAND")
+
+year_street_capV <- matrix(c(Vermont$year, Vermont$street_capital), nrow = 17, ncol = 2)
+mean3 = mean(Vermont$street_capital)
+sd3 = sd(Vermont$street_capital)
+mean3
+sd3
+year_streer_capV <- matrix(c(R_Island$year, R_Island$street_capital), nrow = 17, ncol = 2)
+mean4 = mean(R_Island$street_capital)
+sd4 = sd(R_Island$street_capital)
+mean4
+sd4
+
+x2 <- rnorm(17, mean = 1923.651, sd = 68.94504)
+y2 <- rnorm(17, mean = 2040.148, sd = 146.6524)
+
+d2 <- data.frame(treatment=c(x2,y2))
+
+boxplot(d2) #?????
+
+
+```
 
 ###4. We intuitively presume, that the employment value and the unemployment rate are correlated. Calculate the mean values (considering all states for each year) for both variables and plot both data series in one plot! The plot should have the years on the x-axis and two y-axes for the mean values of both variables. Finally, calculate the correlation value for the two data series and briefly comment on the results!
 
