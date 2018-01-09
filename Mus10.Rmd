@@ -320,26 +320,31 @@ stateUn2 <- states[46]
 stateUn1
 stateUn2
 
-Michigan <- subset(us_states_productions, state == "MICHIGAN")
-W_Verginia <- subset(us_states_productions, state == "WEST_VIRGINIA")
+Michigan <- subset(us_states_productions, state == states[1])
+W_Verginia <- subset(us_states_productions, state == states[2])
 
 year_unempM <- matrix(c(Michigan$year, Michigan$unemployment_rate), nrow = 17, ncol = 2)
 mean1 = mean(Michigan$unemployment_rate)
 sd1 = sd(Michigan$unemployment_rate)
-mean1
-sd1
+cat("mean Michigan: ", mean1, "\n")
+cat("sd Michigan: " ,sd1, "\n")
+
 year_unempV <- matrix(c(W_Verginia$year, W_Verginia$unemployment_rate), nrow = 17, ncol = 2)
 mean2 = mean(W_Verginia$unemployment_rate)
 sd2 = sd(W_Verginia$unemployment_rate)
-mean2
-sd2
+cat("mean W_Verginia: ",mean2, "\n")
+cat("sd W_Verginia: ", sd2, "\n")
 
-x <- rnorm(17, mean = 9.694118, sd = 2.881942)
-y <- rnorm(17, mean = 9.270588, sd = 3.804728)
+#x <- rnorm(17, mean = 9.694118, sd = 2.881942)
+#y <- rnorm(17, mean = 9.270588, sd = 3.804728)
 
-d <- data.frame(treatment=c(x,y))
+x<-Michigan$unemployment_rate
+y<-W_Verginia$unemployment_rate 
 
-boxplot(d) #?????
+d <- data.frame(treatment=c(x,y), id = factor(year_unempM)) 
+f <- data.frame(treatment=c(x,y), id= factor(year_unempV)) 
+boxplot(d[1],  ylab= "Unemployment Rate in %",main="Unemployment rate between 1970 and 1986", xlab = "Michigan", ylim=range(0:20))
+boxplot(f[1],  ylab= "Unemployment Rate in %",main="Unemployment rate between 1970 and 1986", xlab = "West_Verginia",ylim = range(0:20))
 
 
 ```
@@ -374,17 +379,29 @@ sd4 = sd(R_Island$street_capital)
 mean4
 sd4
 
-x2 <- rnorm(17, mean = 1923.651, sd = 68.94504)
-y2 <- rnorm(17, mean = 2040.148, sd = 146.6524)
+#x2 <- rnorm(17, mean = 1923.651, sd = 68.94504)
+#y2 <- rnorm(17, mean = 2040.148, sd = 146.6524)
+x<-Vermont$street_capital
+y<-R_Island$street_capital
 
-d2 <- data.frame(treatment=c(x2,y2))
+d2 <- data.frame(treatment=c(x2,y2), id= factor(year_streer_capV))
+f2 <- data.frame(treatment=c(x2,y2), id= factor(year_street_capV))
 
-boxplot(d2) #?????
+boxplot(d2[1], ylab = "Highway and street capital",xlab = "Vermont",main="Highway & street capital between 1970 and 1986") 
+boxplot(f2[1], ylab = "Highway & street capital",xlab = "R_Island",main="Highway and street capital between 1970 and 1986")
 
 
 ```
 
 ###4. We intuitively presume, that the employment value and the unemployment rate are correlated. Calculate the mean values (considering all states for each year) for both variables and plot both data series in one plot! The plot should have the years on the x-axis and two y-axes for the mean values of both variables. Finally, calculate the correlation value for the two data series and briefly comment on the results!
+
+```{r}
+#jedes jahr von 1970 bis 1986 wird betrachtet
+y<-1970:1086
+
+
+```
+
 
 ###5. Seperate the original data frames containing all observation in multiple dataframes, containing only observations belonging to a particular US state! Output the observations of the US state Florida as a csv file!
 
