@@ -341,10 +341,12 @@ cat("sd W_Verginia: ", sd2, "\n")
 x<-Michigan$unemployment_rate
 y<-W_Verginia$unemployment_rate 
 
-d <- data.frame(treatment=c(x,y), id = factor(year_unempM)) 
-f <- data.frame(treatment=c(x,y), id= factor(year_unempV)) 
-boxplot(d[1],  ylab= "Unemployment Rate in %",main="Unemployment rate between 1970 and 1986", xlab = "Michigan", ylim=range(0:20))
-boxplot(f[1],  ylab= "Unemployment Rate in %",main="Unemployment rate between 1970 and 1986", xlab = "West_Verginia",ylim = range(0:20))
+d <- data.frame(treatment=c(x,y), id = year_unempM) 
+f <- data.frame(treatment=c(x,y), id = year_unempV) 
+boxplot(d[1],  ylab= "Unemployment Rate in %",
+        main="Unemployment rate between 1970 and 1986", xlab = "Michigan", ylim=range(0:20))
+boxplot(f[1],  ylab= "Unemployment Rate in %",
+        main="Unemployment rate between 1970 and 1986", xlab = "West_Verginia",ylim = range(0:20))
 
 
 ```
@@ -381,14 +383,16 @@ sd4
 
 #x2 <- rnorm(17, mean = 1923.651, sd = 68.94504)
 #y2 <- rnorm(17, mean = 2040.148, sd = 146.6524)
-x<-Vermont$street_capital
-y<-R_Island$street_capital
+x2<-Vermont$street_capital
+y2<-R_Island$street_capital
 
 d2 <- data.frame(treatment=c(x2,y2), id= factor(year_streer_capV))
 f2 <- data.frame(treatment=c(x2,y2), id= factor(year_street_capV))
 
-boxplot(d2[1], ylab = "Highway and street capital",xlab = "Vermont",main="Highway & street capital between 1970 and 1986") 
-boxplot(f2[1], ylab = "Highway & street capital",xlab = "R_Island",main="Highway and street capital between 1970 and 1986")
+boxplot(d2[1], ylab = "Highway and street capital",
+        xlab = "Vermont",main="Highway & street capital between 1970 and 1986") 
+boxplot(f2[1], ylab = "Highway & street capital",
+        xlab = "R_Island",main="Highway and street capital between 1970 and 1986")
 
 
 ```
