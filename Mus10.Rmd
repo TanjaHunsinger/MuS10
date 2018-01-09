@@ -42,6 +42,7 @@ legend("topleft", legend = c("x^(0.5)", "x^1", "x^2"),
        col = c("red","blue","green"), lty = "solid")
 ```
 
+Vergleicht man die lineare mit der Logarithmischen Darstellung, so erkennt man, dass man mit der logarithmische Darstellung eine bessere Aussage über das Verhalten der Funktionen treffen kann. Da die logarithmische Darstellung vor allem dann hilfreich ist, wenn der Wertebereich der dargestellten Daten viele Größenordnungen umfasst. Durch die logarithmische Darstellung werden Zusammenhänge im Bereich der kleinen Werte besser überschaubar. Verschiedene mathematische Zusammenhänge können durch die logarithmische Darstellung somit erkennbar bzw. verdeutlicht werden.
 
 ### 2.  We define three functions $F_i (x) = e^{i*x}$ by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10  und x \in Z }$ with a linear,linear and a linear,logarithmic scaling for the x- and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Punkte]
 
@@ -78,6 +79,9 @@ legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"),
 
 ```
 
+Auch hier ist deutlich zu erkennen, dass sich , wenn sowohl x als auch y-Achse linear skaliert sind, keine direkten Aussagen über das Verhalten der Funktionen machen lässt. Die rote und blaue Kurve überschneiden sich, sodass die ote nicht im Schaubild zu erkennen ist. Auch zu beginn überlagern sich die grüne, blaue und rote Kurve, sodass nur die grüne angezeigt wird.
+Logarithmiert man jetzt die y Achse, so werden besonders die kleinen Werte besser überschaubar, sodass alle Kurven gesondert betrachtet werden können ohne Überlagerungen, und somit lässt sich über jede Funktion (Kurve) Aussagen treffen.
+
 ### 3. We define three functions $F_i$ (x) = ln(i*x) by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10 und x \in Z }$ with  a linear, linear and a logarithmic, linear scaling for the x-and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Points]
 
 
@@ -98,23 +102,23 @@ plot(range(x), range(floor(min(function_1,function_2,function_3)):
 lines(x, function_1, type = "b", col = "red")
 lines(x, function_2, type = "b", col = "blue")
 lines(x, function_3, type = "b", col = "green")
-legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"),
+legend("topleft", legend = c("ln(0.5x)", "ln(x)", "ln(2x)"),
               col = c("red","blue","green"), lty = "solid")
 
 #plot logarithmic/linear scaling
 plot(range(x), range(floor(min(function_1,function_2,function_3)):
               ceiling(max(function_1,function_2,function_3))), 
               type = "n", ylab = " F(X)", xlab = "x", 
-              main = "x-Achse logartithmisch und y-Achse linearh scaliert", 
+              main = "x-Achse logartithmisch und y-Achse linear scaliert", 
               log = "x")
 lines(x, function_1, type = "b", col = "red")
 lines(x, function_2, type = "b", col = "blue")
 lines(x, function_3, type = "b", col = "green")
-legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"), 
+legend("topleft", legend = c("ln(0.5x)", "ln(x)", "ln(2x)"), 
             col = c("red","blue","green"), lty = "solid")
 
 ```
-
+Da die Funktionen bereits durch das "ln" logaritmiert sind, zeigen beide Plots keine großen Unterschiede bzw Überlagerungen auf.
 
 ##Problem 10.2: Data Analysis
 
