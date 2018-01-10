@@ -1,6 +1,6 @@
 ---
 title: "MuS10"
-author: "Tanja Hunsinger, Irene MÃ¼ller-Benz"
+author: "Tanja Hunsinger, Irene MÃƒÂ¼ller-Benz"
 date: "7 Januar 2018"
 output: pdf_document
 ---
@@ -42,7 +42,7 @@ legend("topleft", legend = c("x^(0.5)", "x^1", "x^2"),
        col = c("red","blue","green"), lty = "solid")
 ```
 
-Vergleicht man die lineare mit der Logarithmischen Darstellung, so erkennt man, dass man mit der logarithmische Darstellung eine bessere Aussage über das Verhalten der Funktionen treffen kann. Da die logarithmische Darstellung vor allem dann hilfreich ist, wenn der Wertebereich der dargestellten Daten viele Größenordnungen umfasst. Durch die logarithmische Darstellung werden Zusammenhänge im Bereich der kleinen Werte besser überschaubar. Verschiedene mathematische Zusammenhänge können durch die logarithmische Darstellung somit erkennbar bzw. verdeutlicht werden.
+Vergleicht man die lineare mit der Logarithmischen Darstellung, so erkennt man, dass man mit der logarithmische Darstellung eine bessere Aussage Ã¼ber das Verhalten der Funktionen treffen kann. Da die logarithmische Darstellung vor allem dann hilfreich ist, wenn der Wertebereich der dargestellten Daten viele GrÃ¶ÃŸenordnungen umfasst. Durch die logarithmische Darstellung werden ZusammenhÃ¤nge im Bereich der kleinen Werte besser Ã¼berschaubar. Verschiedene mathematische ZusammenhÃ¤nge kÃ¶nnen durch die logarithmische Darstellung somit erkennbar bzw. verdeutlicht werden.
 
 ### 2.  We define three functions $F_i (x) = e^{i*x}$ by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10  und x \in Z }$ with a linear,linear and a linear,logarithmic scaling for the x- and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Punkte]
 
@@ -79,8 +79,8 @@ legend("topleft", legend = c("e^(0.5x)", "e^(x)", "e^(2x)"),
 
 ```
 
-Auch hier ist deutlich zu erkennen, dass sich , wenn sowohl x als auch y-Achse linear skaliert sind, keine direkten Aussagen über das Verhalten der Funktionen machen lässt. Die rote und blaue Kurve überschneiden sich, sodass die ote nicht im Schaubild zu erkennen ist. Auch zu beginn überlagern sich die grüne, blaue und rote Kurve, sodass nur die grüne angezeigt wird.
-Logarithmiert man jetzt die y Achse, so werden besonders die kleinen Werte besser überschaubar, sodass alle Kurven gesondert betrachtet werden können ohne Überlagerungen, und somit lässt sich über jede Funktion (Kurve) Aussagen treffen.
+Auch hier ist deutlich zu erkennen, dass sich , wenn sowohl x als auch y-Achse linear skaliert sind, keine direkten Aussagen Ã¼ber das Verhalten der Funktionen machen lÃ¤sst. Die rote und blaue Kurve Ã¼berschneiden sich, sodass die ote nicht im Schaubild zu erkennen ist. Auch zu beginn Ã¼berlagern sich die grÃ¼ne, blaue und rote Kurve, sodass nur die grÃ¼ne angezeigt wird.
+Logarithmiert man jetzt die y Achse, so werden besonders die kleinen Werte besser Ã¼berschaubar, sodass alle Kurven gesondert betrachtet werden kÃ¶nnen ohne Ãœberlagerungen, und somit lÃ¤sst sich Ã¼ber jede Funktion (Kurve) Aussagen treffen.
 
 ### 3. We define three functions $F_i$ (x) = ln(i*x) by choosing i $\in$ {0.5; 1; 2}. Plot the three functions for ${x : 1 <= x <= 10 und x \in Z }$ with  a linear, linear and a logarithmic, linear scaling for the x-and the y-axis in two different diagrams! Assign meaningful labels to the axes and the curves and explain the observed effects! [15 Points]
 
@@ -118,7 +118,7 @@ legend("topleft", legend = c("ln(0.5x)", "ln(x)", "ln(2x)"),
             col = c("red","blue","green"), lty = "solid")
 
 ```
-Da die Funktionen bereits durch das "ln" logaritmiert sind, zeigen beide Plots keine großen Unterschiede bzw Überlagerungen auf.
+Da die Funktionen bereits durch das "ln" logaritmiert sind, zeigen beide Plots keine groÃŸen Unterschiede bzw Ãœberlagerungen auf.
 
 ##Problem 10.2: Data Analysis
 
@@ -375,7 +375,7 @@ mean3 = mean(Vermont$street_capital)
 sd3 = sd(Vermont$street_capital)
 mean3
 sd3
-year_streer_capV <- matrix(c(R_Island$year, R_Island$street_capital), nrow = 17, ncol = 2)
+year_street_capR <- matrix(c(R_Island$year, R_Island$street_capital), nrow = 17, ncol = 2)
 mean4 = mean(R_Island$street_capital)
 sd4 = sd(R_Island$street_capital)
 mean4
@@ -386,13 +386,13 @@ sd4
 x2<-Vermont$street_capital
 y2<-R_Island$street_capital
 
-d2 <- data.frame(treatment=c(x2,y2), id= factor(year_streer_capV))
-f2 <- data.frame(treatment=c(x2,y2), id= factor(year_street_capV))
+d2 <- data.frame(treatment=c(x2,y2), id= factor(year_street_capV))
+f2 <- data.frame(treatment=c(x2,y2), id= factor(year_street_capR))
 
 boxplot(d2[1], ylab = "Highway and street capital",
         xlab = "Vermont",main="Highway & street capital between 1970 and 1986") 
 boxplot(f2[1], ylab = "Highway & street capital",
-        xlab = "R_Island",main="Highway and street capital between 1970 and 1986")
+        xlab = "R_Island",main="Highway & street capital between 1970 and 1986")
 
 
 ```
