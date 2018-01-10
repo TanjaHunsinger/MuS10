@@ -152,7 +152,6 @@ names(us_states_productions)[8] <- "public_capital"
 names(us_states_productions)[9] <- "state_product"
 names(us_states_productions)[10] <- "employment"
 names(us_states_productions)[11] <- "unemployment_rate"
-us_states_productions
 ```
 
 
